@@ -21,8 +21,8 @@ $(document).ready(function() {
 });
 
 function search(){
-    var input = $("#search-input").val();
-    //var input = document.getElementById("search-input").value;
+    var input = encodeURIComponent(($("#search-input").val()).trim());
+    //var inputRaw = document.getElementById("search-input").value;
     console.log("input is: ", input);
     var wikiRequestTimeout = setTimeout(function(){
             //$wikiElem.text("Failed getting Wiki resources");
