@@ -6,7 +6,42 @@ body {
     background-image: url("https://source.unsplash.com/68ZlATaVYIo/1600x900");
 }
 
-#header-page{
+.header-page{
     color: white;
     font-family: monospace;
+}
+
+.form-area {
+    margin-top: 20px;
+}
+
+.wiki-results-container {
+    margin-top: 20px;
+}
+
+.list-group-hover .list-group-item:hover {
+    background-color: #F4F1DE;
+    color: black;
+}
+
+.article-title{
+    color: black;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.article-description {
+    color: grey;
+    font-size: 13px;
+}
+.rotate{
+    -moz-transition: all 2s linear;
+    -webkit-transition: all 2s linear;
+    transition: all 2s linear;
+}
+
+.rotate .around{
+    -moz-transform:rotate(360deg);
+    -webkit-transform:rotate(360deg);
+    transform:rotate(360deg);
 }

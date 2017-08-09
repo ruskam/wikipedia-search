@@ -21,16 +21,15 @@ $(document).ready(function() {
 });
 
 function search(){
+    $('#wiki-results').html('');
+    var $wikiResultsElement = $('#wiki-results');
     var input = encodeURIComponent(($("#search-input").val()).trim());
-    //var inputRaw = document.getElementById("search-input").value;
+
     console.log("input is: ", input);
     var wikiRequestTimeout = setTimeout(function(){
             //$wikiElem.text("Failed getting Wiki resources");
-        }, 8000);
-    var cityTyped = 'butterflies';
+        }, 10000);
 
-
-    //var wikiUrl ='http://en.wikipedia.org/w/api.php?action=query&generator=random&grnnamespace=0&prop=extracts&exchars=500&format=json';
     var wikiUrl ='http://en.wikipedia.org/w/api.php?action=opensearch&search=' + input + '&format=json';
         console.log(wikiUrl);
 
@@ -40,21 +39,30 @@ function search(){
         jsonp: "callback",
         success: function(response) {
             console.log('response', response);
-            var articleList = response[1];
+            var resultList = response[1];
+            var descriptionList = response[2];
             var urlList = response[3];
             //console.log(articleList);
-            if (typeof articleList !== 'undefined' && articleList.length > 0) {
-                for (var i = 0; i < articleList.length; i++) {
-                    var articleTitle = articleList[i];
+            if (typeof resultList !== 'undefined' && resultList.length > 0) {
+                for (var i = 0; i < resultList.length; i++) {
+                    var articleTitle = resultList[i];
+                    var articleDescription = descriptionList[i];
                     var articleUrl = urlList[i];
-                    //$wikiElem.append('<li><a href="' + articleUrl + '">' + articleTitle + '</a></li>');
+                    $wikiResultsElement.append('<a href="' + articleUrl + '"class="list-group-item list-group-item-action" target="_blank">' + '<span class="article-title">' + articleTitle + '</span>' + '<br>' + '<span class="article-description">' + articleDescription + '</span></a></li><br>');
                 }
 
                 clearTimeout(wikiRequestTimeout);
             }
         }
     });
+
+    $("#form-container").trigger("reset");
+
     return false;
 }
 
 $('#form-container').submit(search);
+
+$(".rotate").hover(function(){
+    $(this).toggleClass("around")  ; 
+})
