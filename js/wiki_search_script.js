@@ -49,7 +49,7 @@ function search(){
                     var articleDescription = descriptionList[i];
                     var articleUrl = urlList[i];
                     /*$wikiResultsElement.append('<a href="' + articleUrl + '" class="list-group-item list-group-item-action" target="_blank">' + '<span class="article-title">' + articleTitle + '</span>' + '<br>' + '<span class="article-description">' + articleDescription + '</span></a></li><br>');*/
-					$wikiResultsElement.append('<a href="' + articleUrl + '" <li class="list-group-item list-group-item-action" target="_blank">' + '<span class="article-title">' + articleTitle + '</span>' + '<br>' + '<span class="article-description">' + articleDescription + '</span></a></li><br>');
+					$wikiResultsElement.append('<a href="' + articleUrl + '" <li class="list-group-item list-group-item-action" target="_blank">' + '<span class="article-title">' + articleTitle + '</span>' + '<br>' + '<span class="article-description">' + articleDescription + '</span></li></a><br>');
                 }
 
                 clearTimeout(wikiRequestTimeout);
